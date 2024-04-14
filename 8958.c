@@ -1,31 +1,43 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-int compare(const void* a, const void* b){
-    return *(int*)b - *(int*)a;
-}
+int main()
+{
+    char n[80];
+    int a;
 
-int main(){
+    scanf("%d",&a);
 
-    int n;
-    int long long tip=0;
-    int ht[100000];
+    for(int s = 0 ; s < a ; s++){
 
-    scanf("%d", &n);
+    scanf("%s", &n);
+    
 
-    for(int i=0; i<n; i++){
-        scanf("%d", &ht[i]);
+
+    int score = 0;
+    int getscore = 0;
+
+
+    for (int j = 0 ; j < strlen(n); j++)
+    {
+        if(n[j]=='O'){
+            getscore += 1;
+            score += getscore;
+
+        }
+        else if(n[j]=='X'){
+            getscore = 0;
+        }
     }
 
-    qsort(ht, n, sizeof(int), compare);
+    printf("%d\n",score);
 
-    for(int i=0; i<n; i++){
-        if(ht[i] - i < 0) break;
-        tip = tip + ht[i] - i;
-        
+
     }
 
-    printf("%lld", tip);
+
+
+
 
     return 0;
 }
